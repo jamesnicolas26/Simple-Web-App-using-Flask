@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <form method="post" action="{{ url_for('add_task') }}">
+        <input type="text" name="task" placeholder="Enter a new task">
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task }} <a href="{{ url_for('delete_task', task_id=loop.index0) }}">Delete</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
